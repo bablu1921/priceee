@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, inital-scale=1.0">
+	<title>Smart Shopping</title>
+
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+	
+	<link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+
+</head>
+<body>
+
+<!--------------------header section-------------------------------------------------------------->
+	<header>
+
+		<div id="menubarr" class="fas fa-bars"></div>
+
+
+
+		<nav class="navbarr">
+			<a href="{{ url_for('index') }}">Home</a>
+			<a href="{{ url_for('.index',_anchor='categories') }}">Categories</a>
+		</nav>
+
+
+
+		<a href="#" class="logo"><span>Smart</span> shopping</a>
+
+		
+
+		<div class="icons">
+			<i class="fas fa-search" id="search-btn"></i>
+			<i class="fas fa-user" id="use"></i>
+			<input type="submit" name="" value="Website" class="btnn" id="website">
+		</div>
+
+		<div class="userr">
+			<div class="ico">
+				<div class="icon">
+					<i class="fas fa-user" id="login-btn"></i>
+				</div>
+				<div class="info">
+					<p>{{ session.name }}</p>
+				</div>
+			</div>
+			<div class="cont">
+				<a href="{{ url_for('.index',_anchor='contact') }}">Contact</a> 			
+			</div>
+		</div>
+
+		<form action="/results" class="search-bar-container" method="get">
+			<input type="search" id="search-bar" placeholder="search here......" name="product_name" autocomplete="off">
+
+		</form>
+
+		<div class="autocom-box">
+			<li>Mobile</li>
+			<li>Iphone</li>
+			<li>Mobile</li>
+			<li>Mobile</li>
+			<li>Mobile</li>
+		</div>
+
+
+		<div class="web-box">
+				<a href="#amazon">Amazon</a>
+				<a href="#flipkart">Flipkart</a>
+				<a href="#google">Google</a>
+				<a href="#olx">Olx</a>
+		</div>
+
+	</header>
+
+
+
+
+	<section class="mobile" id="amazon">
+		
+
+		<h1 class="cate">
+			<span>A</span>
+			<span>M</span>
+			<span>A</span>
+			<span>Z</span>
+			<span>O</span>
+			<span>N</span>
+		</h1>
+
+		<div class="box-container">
+		{% for i in product_name_ama %}
+		<div class="boxt">
+			<img src="{{product_img_ama[loop.index]}}">
+			<div class="content">
+				<h3>{{product_name_ama[loop.index]}}</h3>
+				<p></p>
+				<div class="stars">
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+				</div>
+				<div class="price">{{product_price_ama[loop.index]}}</div>
+				<p>Amazon.in</p>
+				<a href="{{product_link_ama[loop.index]}}" class="btn">book now</a>
+			</div>
+		</div>
+		{% endfor %}
+		</div>
+
+		<button class="bttn">Load More</button>
+
+	</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<section class="mobile" id="flipkart">
+		
+
+		<h1 class="cate">
+			<span>F</span>
+			<span>L</span>
+			<span>I</span>
+			<span>P</span>
+			<span>K</span>
+			<span>A</span>
+			<span>R</span>
+			<span>T</span>
+		</h1>
+
+		<div class="box-container">
+		{% for i in product_name_flip %}
+		<div class="boxx">
+			<img src="{{ product_img_flip[loop.index] }}">
+			<div class="content">
+				<h3>{{ product_name_flip[loop.index] }}</h3>
+				<h2>{{ product_specs_flip[loop.index] }}</h2>
+				<div class="stars">
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+				</div>
+				<div class="price">{{ product_price_flip[loop.index] }}</div>
+				<p>Flipkart</p>
+				<a href="{{ product_link_flip[loop.index]}}" class="btn">book now</a>
+			</div>
+		</div>
+		{% endfor %}
+		</div>
+
+		<button class="btttn">Load More</button>
+
+
+	</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<section class="mobile" id="google">
+		
+
+		<h1 class="cate">
+			<span>G</span>
+			<span>O</span>
+			<span>O</span>
+			<span>G</span>
+			<span>L</span>
+			<span>E</span>
+		</h1>
+
+		<div class="box-container">
+		{% for i in product_name_gog %}
+		<div class="boxxx">
+			<img src="{{ product_img_gog[loop.index] }}">
+			<div class="content">
+				<h3>{{ product_name_gog[loop.index] }}</h3>
+				<p></p>
+				<div class="stars">
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+				</div>
+				<div class="price">{{ product_price_gog[loop.index] }}</div>
+				<p> Google Store/{{ product_seller[loop.index] }}</p>
+				<a href="{{ product_link_gog[loop.index]}}" class="btn">book now</a>
+			</div>
+		</div>
+		{% endfor %}
+		</div>
+
+		<button class="bttttn">Load More</button>
+
+
+
+	</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<section class="mobile" id="olx">
+		
+
+		<h1 class="cate">
+			<span>O</span>
+			<span>L</span>
+			<span>X</span>
+		</h1>
+
+		<div class="box-container">
+		{% for i in product_name_olx %}
+		<div class="boxxxx">
+			<img src="{{ product_img_olx[loop.index] }}">
+			<div class="content">
+				<h3>{{ product_name_olx[loop.index] }}</h3>
+				<div class="price">{{ product_price_olx[loop.index] }}</div>
+				<p>OLX</p>
+				<a href="{{ product_link_olx[loop.index]}}" class="btn">book now</a>
+			</div>
+		</div>
+		{% endfor %}
+		</div>
+
+		<button class="btttttn">Load More</button>
+
+	</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="resp">
+		<h1 class="cate">
+			<span>r</span>
+			<span>e</span>
+			<span>c</span>
+			<span>o</span>
+			<span>m</span>
+			<span>m</span>
+			<span>e</span>
+			<span>n</span>
+			<span>d</span>
+			<span>e</span>
+			<span>d</span>
+		</h1>
+		<div class="swiper-container brand-slider">
+			<div class="swiper-wrapper">
+
+				<div class="swiper-slide">
+							<div class="ccol">
+								<div class="imgBox">
+									<img src="https://m.media-amazon.com/images/I/71m0Nn4vqOL._SL1254_.jpg">
+								</div>
+								<div class="content">
+									<h3>AmazonBasics</h3>
+									<p>AmazonBasics 80cm (32 inch)</p>
+									<div class="stars">
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+									</div>
+									<div class="price">₹16,999.00</div>
+									<p>Amazon</p>
+									<a href="https://www.amazon.in/dp/B087JX4TT4/ref=s9_acsd_al_bw_c2_x_0_t?pf_rd_m=A1K21FY43GMZF8&pf_rd_s=merchandised-search-5&pf_rd_r=EN5QTKPK1QGEY13FTBMQ&pf_rd_t=101&pf_rd_p=49b89a4e-8539-4c21-97bc-17c100e07998&pf_rd_i=26190167031" class="btn">book now</a>
+								</div>
+							</div>
+				</div>
+
+				<div class="swiper-slide">
+						<div class="ccol">
+							<div class="imgBox">
+								<img src="https://m.media-amazon.com/images/I/61qAOpxo8wL._SL1500_.jpg">
+							</div>
+							<div class="content">
+								<h3>Carrier</h3>
+								<p>Carrier 1.5 Ton 5 Star Inverter Split AC</p>
+								<div class="stars">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+								</div>
+								<div class="price">₹41,990.00</div>
+								<p>Amazon</p>
+								<a href="https://www.amazon.in/dp/B08T8HSCH7/ref=redir_mobile_desktop?_encoding=UTF8&aaxitk=687b0c1b445e7ea5528b9b87f89fbd4f&hsa_cr_id=6161807260202&pd_rd_plhdr=t&pd_rd_r=a1c11873-49fd-4bef-9e5d-8fa92b7b350f&pd_rd_w=GPiEi&pd_rd_wg=7qdx6&ref_=sbx_be_s_sparkle_mcd_asin_0_title" class="btn">book now</a>
+							</div>
+						</div>
+
+
+				</div>
+
+				<div class="swiper-slide">
+							<div class="ccol">
+								<div class="imgBox">
+									<img src="https://m.media-amazon.com/images/I/61RZcuVxPFL._SL1500_.jpg">
+								</div>
+								<div class="content">
+									<h3>Samsung</h3>
+									<p>Samsung 23 L Solo Microwave Oven (MS23F301TAK/TL, Black)</p>
+									<div class="stars">
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+									</div>
+									<div class="price">₹5,750.00 </div>
+									<p>Flipkart</p>
+									<a href="https://www.amazon.in/Samsung-Microwave-MS23F301TAK-TL-Black/dp/B0138EWYTO/ref=lp_1380072031_1_1?dchild=1" class="btn">book now</a>
+								</div>
+							</div>
+
+
+
+				</div>
+
+
+				<div class="swiper-slide">
+							<div class="ccol">
+								<div class="imgBox">
+									<img src="https://m.media-amazon.com/images/I/71+drtp5RSL._SL1500_.jpg">
+								</div>
+								<div class="content">
+									<h3>Usha</h3>
+									<p>Usha Cook Joy (3616) 1600-Watt Induction Cooktop (Black)</p>
+									<div class="stars">
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+									</div>
+									<div class="price">₹2,099.00</div>
+									<p>Amazon</p>
+									<a href="https://www.amazon.in/dp/B072PXYG1R/ref=redir_mobile_desktop?_encoding=UTF8&aaxitk=e04d0a4cd93c903ab0604f74f855d611&hsa_cr_id=9186762320902&pd_rd_plhdr=t&pd_rd_r=f2406d73-77b2-4a57-9b5a-46da38c9a147&pd_rd_w=mojGc&pd_rd_wg=zHD7Q&ref_=sbx_be_s_sparkle_mcd_asin_0_img" class="btn">book now</a>
+								</div>
+							</div>
+
+
+				</div>
+
+				<div class="swiper-slide">
+							<div class="ccol">
+								<div class="imgBox">
+									<img src="https://m.media-amazon.com/images/I/61yy90wpYLS._SL1500_.jpg">
+								</div>
+								<div class="content">
+									<h3>Mi</h3>
+									<p>Mi Robot Vacuum-Mop P, 2100 Pa Strong Suction Robotic Floor Cleaner</p>
+									<div class="stars">
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+									</div>
+									<div class="price">₹24,999.00</div>
+									<p>Amazon</p>
+									<a href="https://www.amazon.in/gp/product/B092R48XXB/ref=s9_acss_bw_cg_breakhtw_1a1_w?pf_rd_m=A1K21FY43GMZF8&pf_rd_s=merchandised-search-5&pf_rd_r=9JJ2X008PEG9GCM98VWA&pf_rd_t=101&pf_rd_p=4ac1ba71-f711-40a6-9bff-571e8be07f0e&pf_rd_i=4951860031" class="btn">book now</a>
+								</div>
+							</div>
+
+
+
+				</div>
+			</div>
+		</div>	
+	</div>
+
+
+
+
+
+
+
+
+<!--------------------footer section-------------------------------------------------------------->
+
+	<section class="footer">
+
+		<div class="box-container">
+
+			<div class="box">
+				<h3>about us</h3>
+				<p>Searching for your favourite products at the best possible prices? At smart shopping we give you easy access to the best deals that can help you save more money while shopping.
+				Shortlisting, filtering, and researching takes away a lot of time, and when you have finally decided on what you want to buy, it can get cumbersome to find the best deals on that particular product. With Amazon, Flipkart, Myntra, Paytm and other similar platforms offering varied discounts, it can also get tough to fish out the best offers. That’s when you are going to need a platform like pricee.com – a one stop solution for online price comparisons across multiple product categories.</p>
+			</div>
+
+			<div class="box">
+				<h3>website</h3>
+				<a href="https://amazon.in">Amazon</a>
+				<a href="https://www.flipkart.com">Flipkart</a>
+				<a href="https://www.olx.in">olx</a>
+				<a href="https://www.shopping.google.com">Google</a>
+			</div>
+
+			<div class="box">
+				<h3>quick links</h3>
+				<a href="#home">Home</a>
+				<a href="{{ url_for('.index',_anchor='popular') }}">Popular</a>
+				<a href="{{ url_for('.index',_anchor='categories') }}">Categories</a>
+				<a href="{{ url_for('.index',_anchor='services') }}">Services</a>
+				<a href="{{ url_for('.index',_anchor='contact') }}">Contact</a>
+			</div>
+
+			<div class="box">
+				<h3>follow us</h3>
+				<a href="#">facebook</a>
+				<a href="#">instagram</a>
+				<a href="#">twitter</a>
+				<a href="#">linkedin</a>
+				<a href="#">github</a>
+			</div>
+
+		</div>
+
+
+		
+
+	</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+ <script>
+ 	let menurr = document.querySelector('#menubarr');
+	let navbarr = document.querySelector('.navbarr');
+	let searchBtn = document.querySelector('#search-btn');
+	let searchBar = document.querySelector('.search-bar-container');
+	let usr = document.querySelector('#use');
+	let detail = document.querySelector('.userr');
+	let website = document.querySelector('#website');
+	let webbox = document.querySelector('.web-box');
+
+	window.onscroll = () =>{
+		searchBtn.classList.remove('fa-times');
+		searchBar.classList.remove('active');
+		menurr.classList.remove('fa-times');
+		navbarr.classList.remove('active');
+		detail.classList.remove('active');
+		webbox.classList.remove('active');
+	}
+
+	menurr.addEventListener('click', () => {
+		menurr.classList.toggle('fa-times');
+		navbarr.classList.toggle('active');
+	})
+
+	searchBtn.addEventListener('click', () => {
+	searchBtn.classList.toggle('fa-times');
+	searchBar.classList.toggle('active');
+	})
+
+	usr.addEventListener('click', () => {
+		detail.classList.toggle('active');
+	})
+
+
+	website.addEventListener('click', () => {
+		website.classList.toggle('fa-times');
+		webbox.classList.toggle('active');
+	})
+
+	$(".boxt").slice(0,3).show()
+	$(".bttn").on("click", function(){
+		$(".boxt:hidden").slice(0,3).slideDown()
+		if($(".boxt:hidden").length == 0){
+			$(".bttn").fadeOut(`slow`)
+		}
+	})
+
+	$(".boxx").slice(0,3).show()
+	$(".btttn").on("click", function(){
+		$(".boxx:hidden").slice(0,3).slideDown()
+		if($(".boxx:hidden").length == 0){
+			$(".btttn").fadeOut(`slow`)
+		}
+	})
+
+	$(".boxxx").slice(0,3).show()
+	$(".bttttn").on("click", function(){
+		$(".boxxx:hidden").slice(0,3).slideDown()
+		if($(".boxxx:hidden").length == 0){
+			$(".bttttn").fadeOut(`slow`)
+		}
+	})
+
+
+	$(".boxxxx").slice(0,3).show()
+	$(".btttttn").on("click", function(){
+		$(".boxxxx:hidden").slice(0,3).slideDown()
+		if($(".boxxxx:hidden").length == 0){
+			$(".btttttn").fadeOut(`slow`)
+		}
+	})
+
+	var swiper = new Swiper(".brand-slider", {
+    spaceBetween: 40,
+    loop:true,
+    autoplay: {
+        delay: 1800,
+        disableOnInteraction: false,
+    },
+    breakpoints: {
+        768: {
+          slidesPerView: 1,
+        },
+        991: {
+          slidesPerView: 2,
+        },
+        1200: {
+          slidesPerView: 3,
+        },
+      },
+	});
+
+
+ </script>
+
+<script>
+	const searchWrapper = document.querySelector(".search-bar-container");
+const inputBox = searchWrapper.querySelector("input");
+const suggBox = document.querySelector(".autocom-box");
+
+let shopBtn = document.querySelector("#shop");
+
+
+
+
+
+
+inputBox.onkeyup = (e) => {
+  let userData = e.target.value;
+  let emptyArray = [];
+  if(userData){
+    emptyArray = suggestions.filter((data) => {
+      return data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase());
+    })
+    emptyArray = emptyArray.map((data) =>{
+      return data = '<li>' + data + '</li>';
+    });
+    console.log(emptyArray);
+    suggBox.style.display="block";
+    showSuggestions(emptyArray);
+    let allList = suggBox.querySelectorAll("li");
+    for (let i = 0; i < allList.length; i++){
+      allList[i].setAttribute("onclick", "select(this)");
+    }
+
+  }else{
+    suggBox.style.display="none";
+  }
+}
+
+
+function select(element){
+  let selectUserData = element.textContent;
+  inputBox.value = selectUserData;
+}
+
+
+
+
+
+
+function showSuggestions(list){
+  let listData;
+  if(!list.length){
+      userVal = inputBox.value;
+      listData = '<li>' + userVal + '</li>';
+  }else if(inputBox.value.length == 0){
+      suggBox.style.display="none";
+  }else{
+    listData = list.join('');
+  }
+  suggBox.innerHTML = listData;
+}
+
+
+</script>
+
+
+
+
+
+
+<script src="{{ url_for('static',filename='suggestion.js') }}"></script>
+
+
+<script src="{{ url_for('static',filename='script.js') }}">
+		
+</script>
+
+
+</body>
+</html>
